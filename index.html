@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bielinki Barber - Planos Mensais</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#284703',
+                        'brand-green': '#4A701C',
+                        'brand-light': '#88B257',
+                        'brand-beige': '#F5F5DC',
+                        'brand-text': '#555D4C'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-brand-dark text-brand-beige py-6">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2">Bielinki Barber</h1>
+            <p class="text-xl">Seu visual sempre em dia</p>
+        </div>
+    </header>
+
+    <!-- Subtitle Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-brand-text mb-4">Planos mensais com praticidade, economia e agendamento prioritário</h2>
+        </div>
+    </section>
+
+    <!-- Why Subscribe Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-brand-text mb-8 text-center">Por que assinar</h2>
+            <div class="max-w-4xl mx-auto">
+                <p class="text-lg text-brand-text mb-6 leading-relaxed">
+                    Cortes atrasados por falta de horário. Gastos avulsos sem previsão. Rotina corrida que atrapalha o autocuidado.
+                </p>
+                <p class="text-lg text-brand-text leading-relaxed">
+                    Com os planos Bielinki Barber você resolve tudo de uma vez: custo fixo por mês, prioridade para agendar e padrão de qualidade constante.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-brand-text mb-12 text-center">Planos</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                
+                <!-- Plan 1 -->
+                <div class="bg-brand-green rounded-lg p-8 text-center shadow-lg">
+                    <h3 class="text-2xl font-bold text-white mb-4">Plano Ilimitado de Corte</h3>
+                    <div class="text-4xl font-bold text-white mb-6">R$ 89,90<span class="text-lg">/mês</span></div>
+                    <p class="text-white mb-6">Corte sempre que precisar durante o mês</p>
+                    <button onclick="openModal('modal1')" class="bg-brand-light text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors w-full mb-4">
+                        Assinar agora
+                    </button>
+                    <button onclick="openModal('planModal1')" class="text-white underline hover:no-underline">
+                        Ver detalhes do plano
+                    </button>
+                </div>
+
+                <!-- Plan 2 -->
+                <div class="bg-brand-green rounded-lg p-8 text-center shadow-lg">
+                    <h3 class="text-2xl font-bold text-white mb-4">Plano Completo Cabelo + Barba</h3>
+                    <div class="text-4xl font-bold text-white mb-6">R$ 149,90<span class="text-lg">/mês</span></div>
+                    <p class="text-white mb-6">Corte e barba sempre em dia com custo fixo</p>
+                    <button onclick="openModal('modal2')" class="bg-brand-light text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors w-full mb-4">
+                        Assinar agora
+                    </button>
+                    <button onclick="openModal('planModal2')" class="text-white underline hover:no-underline">
+                        Ver detalhes do plano
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-brand-text mb-12 text-center">Como funciona</h2>
+            <div class="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <div class="bg-brand-light text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                    <p class="text-brand-text font-semibold">Escolha o plano</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-brand-light text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                    <p class="text-brand-text font-semibold">Confirme a assinatura</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-brand-light text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                    <p class="text-brand-text font-semibold">Agende pelo WhatsApp sempre que precisar</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-brand-light text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+                    <p class="text-brand-text font-semibold">Compareça no horário e aproveite seu atendimento premium</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="bg-brand-light text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors inline-block">
+                    Falar no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-brand-text mb-8">Onde estamos</h2>
+            <p class="text-lg text-brand-text mb-8">Visite nossa barbearia e conheça o ambiente</p>
+            <a href="https://maps.app.goo.gl/ymphJQqePwGV1kRp6" target="_blank" class="border-2 border-brand-light text-brand-light px-8 py-3 rounded-lg font-semibold hover:bg-brand-light hover:text-white transition-colors inline-block">
+                Ver localização
+            </a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-brand-text mb-12 text-center">Dúvidas frequentes</h2>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 class="font-bold text-brand-text mb-2">Posso compartilhar o plano?</h3>
+                    <p class="text-brand-text">Não. O plano é pessoal e intransferível.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 class="font-bold text-brand-text mb-2">Quantos atendimentos posso fazer no mês?</h3>
+                    <p class="text-brand-text">Ilimitados, conforme disponibilidade de agenda e dentro do horário de funcionamento.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 class="font-bold text-brand-text mb-2">Como faço para agendar?</h3>
+                    <p class="text-brand-text">Pelo botão do WhatsApp. Assinantes têm prioridade no agendamento.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 class="font-bold text-brand-text mb-2">Há fidelidade?</h3>
+                    <p class="text-brand-text">Cobrança mensal recorrente e cancelamento a qualquer momento antes da próxima renovação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="py-8 bg-white border-t">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center items-center gap-8 text-brand-text text-sm">
+                <span class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-brand-light" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    Pagamento seguro
+                </span>
+                <span class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-brand-light" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    Atendimento profissional
+                </span>
+                <span class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-brand-light" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    Satisfação comprovada
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-brand-beige py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Bielinki Barber. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Plan 1 Details Modal -->
+    <div id="planModal1" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-brand-text">O que você recebe</h3>
+                <button onclick="closeModal('planModal1')" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="font-bold text-brand-text mb-3">Benefícios</h4>
+                <ul class="space-y-2 text-brand-text">
+                    <li class="flex items-start gap-2">
+                        <span class="text-brand-light mt-1">•</span>
+                        Cortes de cabelo ilimitados no mês
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-brand-light mt-1">•</span>
+                        Agendamento com prioridade
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-brand-light mt-1">•</span>
+                        Padrão Bielinki de atendimento e acabamento
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mb-6">
+                <h4 class="font-bold text-brand-text mb-3">Problema e solução</h4>
+                <div class="space-y-3 text-brand-text">
+                    <p><strong>Problema:</strong> Falta de horário e corte atrasado</p>
+                    <p><strong>Solução:</strong> Assinatura com prioridade e cortes ilimitados para se manter sempre alinhado</p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <h4 class="font-bold text-brand-text mb-3">Observações de uso</h4>
+                <ul class="space-y-2 text-brand-text text-sm">
+                    <li class="flex items-start gap-2">
+                        <span class="text-brand-light mt-1">•</span>
+                        Plano pessoal e intransferível
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-brand-light mt-1">•</span>
+                        Válido por mês corrido a partir da confirmação da assinatura
+                    </li>
+                </ul>
+            </div>
+
+            <button onclick="closeModal('planModal1')" class="bg-brand-light text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-colors w-full">
+                Fechar
+            </button>
+        </div>
+    </div>
+
+    <!-- Plan 2 Details Modal -->
+    <div id="planModal2" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-brand-text">O que você recebe</h3>
+                <button onclick="closeModal('planModal2')" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="font-bold text-brand-text mb-3">Benefícios</h4>
+                <ul class="space-y-2 text-brand-text">
+                    <li class="flex items-start gap-2">
+                        <span class="text-brand-light mt-1">•</span>
+                        Cortes de cabelo ilimitados no mês
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-brand-light mt-1">•</span>
+                        Barba modelada sempre que quiser no mês
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-brand-light mt-1">•</span>
+                        Agendamento com prioridade
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-brand-light mt-1">•</span>
+                        Economia real em comparação ao serviço avulso
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mb-6">
+                <h4 class="font-bold text-brand-text mb-3">Problema e solução</h4>
+                <div class="space-y-3 text-brand-text">
+                    <p><strong>Problema:</strong> Custos imprevisíveis e visual perdendo o alinhamento entre um atendimento e outro</p>
+                    <p><strong>Solução:</strong> Cabelo e barba no padrão, com previsibilidade de preço e prioridade de vaga</p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <h4 class="font-bold text-brand-text mb-3">Observações de uso</h4>
+                <ul class="space-y-2 text-brand-text text-sm">
+                    <li class="flex items-start gap-2">
+                        <span class="text-brand-light mt-1">•</span>
+                        Plano pessoal e intransferível
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-brand-light mt-1">•</span>
+                        Válido por mês corrido a partir da confirmação da assinatura
+                    </li>
+                </ul>
+            </div>
+
+            <button onclick="closeModal('planModal2')" class="bg-brand-light text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-colors w-full">
+                Fechar
+            </button>
+        </div>
+    </div>
+
+    <!-- Subscription Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content text-center">
+            <h3 class="text-2xl font-bold text-brand-text mb-4">Plano Ilimitado de Corte</h3>
+            <p class="text-4xl font-bold text-brand-green mb-6">R$ 89,90/mês</p>
+            <p class="text-brand-text mb-6">Esta é uma demonstração. Em um site real, aqui seria integrado um sistema de pagamento seguro.</p>
+            <div class="flex gap-4">
+                <button onclick="closeModal('modal1')" class="flex-1 border-2 border-brand-light text-brand-light px-6 py-2 rounded-lg hover:bg-brand-light hover:text-white transition-colors">
+                    Voltar
+                </button>
+                <button class="flex-1 bg-brand-light text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-colors">
+                    Continuar (Demo)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content text-center">
+            <h3 class="text-2xl font-bold text-brand-text mb-4">Plano Completo Cabelo + Barba</h3>
+            <p class="text-4xl font-bold text-brand-green mb-6">R$ 149,90/mês</p>
+            <p class="text-brand-text mb-6">Esta é uma demonstração. Em um site real, aqui seria integrado um sistema de pagamento seguro.</p>
+            <div class="flex gap-4">
+                <button onclick="closeModal('modal2')" class="flex-1 border-2 border-brand-light text-brand-light px-6 py-2 rounded-lg hover:bg-brand-light hover:text-white transition-colors">
+                    Voltar
+                </button>
+                <button class="flex-1 bg-brand-light text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-colors">
+                    Continuar (Demo)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('show');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('show');
+            }
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'979743f301024d42',t:'MTc1NjkyMzY3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
